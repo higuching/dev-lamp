@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  mysql:
+    build: ./mysql
+    hostname: 'localhost_mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: hogehoge
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+    container_name: dev_mysql
+  php:
+    build: ./php
+    hostname: 'localhost'
+    environment:
+      HTTP_PROXY: http://proxy.hogehoge:8080
+      HTTPS_PROXY: https://proxy.hogehoge:8080
+    ports:
+      - '80:80'
+    volumes:
+      - /vagrant/hoge:/httpd/hoge    # コンテンツソースファイルなど
+    links:
+      - mysql
+      - memcached
+    container_name: dev_php
+  memcached:
+    image: memcached:1.4
+    ports:
+      - '1121:1121'
+    container_name: dev_memcached
