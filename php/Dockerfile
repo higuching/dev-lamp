@@ -1,7 +1,7 @@
 FROM php:7.3.3-apache
 
-ENV http_proxy http://proxy.hogehoge:8080
-ENV https_proxy https://proxy.hogehoge:8080
+ENV http_proxy http://proxy.example.com:8080
+ENV https_proxy https://proxy.example.com:8080
 ENV PHP_MEMCACHED_VERSION 3.1.3
 
 COPY php.ini /usr/local/etc/php/

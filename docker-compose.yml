@@ -13,8 +13,8 @@ services:
     build: ./php
     hostname: 'localhost'
     environment:
-      HTTP_PROXY: http://proxy.hogehoge:8080
-      HTTPS_PROXY: https://proxy.hogehoge:8080
+      HTTP_PROXY: http://proxy.example.com:8080
+      HTTPS_PROXY: http://proxy.example.com:8080
     ports:
       - '80:80'
     volumes:
